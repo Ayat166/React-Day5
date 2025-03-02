@@ -39,7 +39,6 @@ src/
 1. Clone the repository  
    ```bash
    git clone https://github.com/Ayat166/React-Day5.git
-   cd your-project-folder
    ```  
 2. Install dependencies  
    ```bash
