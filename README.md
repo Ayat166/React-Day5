@@ -5,6 +5,7 @@ This is a simple e-commerce web application built using React and Axios. The web
 
 ![alt text](src/assets/image.png)
 ![alt text](src/assets/image2.png)
+![alt text](src/assets/image3.png)
 ## Project Structure  
 
 ```
@@ -25,10 +26,9 @@ src/
 ✅ **Product Listing:** Retrieves a list of products from an API request.  
 ✅ **Filtering by Category:** Users can filter products by category ID using Axios.  
 ✅ **Product Details Page:** Displays product details based on the selected product's ID using Axios.  
-
+✅ **Search Functionality:** Enabling product search by name or category.
 ## Features (In Progress)  
 🚧 **Add to Cart:** Implementing functionality to add products to the cart.  
-🚧 **Search Functionality:** Enabling product search by name or category.  
 
 ## Technologies Used  
 - **React** (Frontend framework)  

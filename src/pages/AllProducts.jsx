@@ -6,12 +6,19 @@ import { Link } from "react-router-dom";
 
 function AllProducts() {
   const [data, setData] = useState([]);
-  const { category } = useParams();
+  const { category,searchQuery } = useParams();
 
 
   useEffect(()=>{
-    const url = category?`https://dummyjson.com/products/category/${category}`:"https://dummyjson.com/products";
-    console.log(category)
+    
+    let url = "https://dummyjson.com/products"; 
+    if (searchQuery) {
+        url = `https://dummyjson.com/products/search?q=${searchQuery}`;
+    } else if (category) {
+        url = `https://dummyjson.com/products/category/${category}`;
+    }
+
+    //console.log(category)
     axios.get(url)
       .then((response) => {
         setData(response.data.products);
@@ -19,7 +26,8 @@ function AllProducts() {
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  },[category]);
+  },[category,searchQuery]);
+  //console.log(searchQuery)
 
   return (
     <Container className="mt-4">
