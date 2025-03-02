@@ -1,16 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React, { useEffect, useState,useContext  } from "react";
+import { Navbar, Nav, Container, Button, Badge, Dropdown ,Form} from "react-bootstrap";
+
 import { Link, useLocation } from "react-router-dom";
+import { CartContext } from "./CartContext";
 
 function UpperNavBar() {
   const [data, loadData] = useState([]);
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
+  const { cart, removeFromCart } = useContext(CartContext);
+
   useEffect(() => {
     axios
       .get("https://dummyjson.com/products/categories")
@@ -59,17 +59,42 @@ function UpperNavBar() {
                 aria-label="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-
               />
               <Button
                 variant="outline-success"
-                type="submit" 
+                type="submit"
                 as={Link}
                 to={searchTerm.trim() ? `/search-products/${searchTerm}` : "/"}
                 disabled={!searchTerm.trim()}
               >
                 Search
               </Button>
+              {/* Cart Dropdown */}
+              <Dropdown align="end">
+                <Dropdown.Toggle variant="outline-primary">
+                  Cart <Badge bg="danger">{cart.length}</Badge>
+                </Dropdown.Toggle>
+                <Dropdown.Menu style={{ minWidth: "300px" }}>
+                  {cart.length === 0 ? (
+                    <Dropdown.Item>No items in cart</Dropdown.Item>
+                  ) : (
+                    cart.map((item) => (
+                      <Dropdown.Item key={item.id}>
+                        {item.title} - ${item.price}
+                        <Button
+                          variant="light"
+                          size="sm"
+                          className="ms-2"
+                          onClick={() => removeFromCart(item.id)}
+                        >
+                          ❌
+                        </Button>
+                      </Dropdown.Item>
+                    ))
+                  )}
+                  
+                </Dropdown.Menu>
+              </Dropdown>
             </Form>
           </Navbar.Collapse>
         </Container>

@@ -1,12 +1,14 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Button, Container, Row, Col ,Image} from "react-bootstrap";
+import { CartContext } from "../components/CartContext";
 
 function ProductDetails() {
   const [product, loadProduct] = useState({});
   const { productId } = useParams();
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     axios
@@ -30,8 +32,8 @@ function ProductDetails() {
             <p className="text-muted">{product.category}</p>
             <h4 className="text-success">${product.price}</h4>
             <p>{product.description}</p>
-            <Button variant="primary" size="lg">
-              Add to Cart
+            <Button variant="primary" onClick={() => addToCart(product)}>
+              Add to Cart 🛒
             </Button>
           </Col>
         </Row>
