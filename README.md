@@ -3,6 +3,8 @@
 ## Project Overview  
 This is a simple e-commerce web application built using React and Axios. The website dynamically fetches and displays product categories and product details from an API, allowing users to browse and filter products efficiently.  
 
+![alt text](src/assets/image.png)
+![alt text](src/assets/image2.png)
 ## Project Structure  
 
 ```
