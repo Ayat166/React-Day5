@@ -14,6 +14,7 @@ src/
 │── assets/  
 │── components/  
 │   ├── UpperNavBar.jsx  # Navigation bar component  
+│   ├── CartContext.jsx  # shared context to manage cart state
 │── pages/  
 │   ├── AllProducts.jsx  # Displays a list of products  
 │   ├── ProductDetails.jsx  # Displays details of a single product  
@@ -26,9 +27,10 @@ src/
 ✅ **Dynamic Navbar:** Fetches and displays categories from an API.  
 ✅ **Product Listing:** Retrieves a list of products from an API request.  
 ✅ **Filtering by Category:** Users can filter products by category ID using Axios.  
+✅ **Add to Cart:** Implementing functionality to add products to the cart.  
 ✅ **Product Details Page:** Displays product details based on the selected product's ID using Axios.  
 ✅ **Search Functionality:** Enabling product search by name or category.
-✅ **Add to Cart:** Implementing functionality to add products to the cart.  
+
 
 ## Technologies Used  
 - **React** (Frontend framework)  
